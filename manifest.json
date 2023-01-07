@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "AliExpress Affiliate Link Generator",
+    "version": "1.0.0",
+    "description": "Automate the process of shot affilate link",
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "web_accessible_resources": [{
+        "resources": ["html/popup.html", "css/custom.css", "js/*.js"],
+        "matches": ["<all_urls>"]
+    }],
+    "icons": {
+        "16": "img/logo.png",
+        "32": "img/logo.png",
+        "48": "img/logo.png",
+        "128": "img/logo.png"
+    },
+    "action": {
+        "default_icon": "img/logo.png",
+        "default_title": "Affiliate Link Generator",
+        "default_popup": "html/popup.html"
+    },
+    "content_scripts": [{
+        "all_frames": true,
+        "matches": ["*://portals.aliexpress.com/*"],
+        "css": ["css/custom.css"],
+        "js": ["js/global.js", "js/content.js"],
+        "match_about_blank": true
+    }],
+    "permissions": ["storage", "tabs", "unlimitedStorage"],
+    "host_permissions": ["<all_urls>"]
+}

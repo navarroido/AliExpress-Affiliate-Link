@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+    <style>
+        .flex {
+            display: flex !important;
+        }
+
+        .flex-jst-center {
+            justify-content: center;
+        }
+
+        .flex-jst-sb {
+            justify-content: space-between;
+        }
+
+        .flex-jst-se {
+            justify-content: space-evenly;
+        }
+
+        .flex-jst-sa {
+            justify-content: space-around;
+        }
+
+        .flex-aln-center {
+            align-items: center;
+        }
+
+        .flex-d-col {
+            flex-direction: column;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 9rem;
+            background: #363949;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            width: 18rem;
+            height: max-content;
+            font-family: 'Poppins', sans-serif;
+            user-select: none;
+        }
+
+        .container {
+            width: 100%;
+            height: 20rem;
+            margin-bottom: 1rem;
+        }
+
+        header {
+            justify-content: flex-end;
+            margin-top: .8rem;
+            padding-inline: .8rem;
+            height: 2rem;
+            width: 100%;
+        }
+
+        main {
+            width: 100%;
+            height: 20rem;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        h2 {
+            letter-spacing: 2px;
+        }
+
+        select {
+            width: 16rem;
+        }
+
+        textarea {
+            height: 8rem;
+            width: 16rem;
+            resize: none;
+        }
+
+        select,
+        textarea {
+            font-weight: bolder;
+            border-radius: 3px;
+            color: rgb(97, 97, 97);
+            background: rgb(238, 238, 238);
+            outline: none;
+            border: none;
+            letter-spacing: 2px;
+            padding: .8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .buttonSection button {
+            letter-spacing: 1px;
+            font-weight: bolder;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            width: 16rem;
+            font-size: .9rem;
+            padding-block: .8rem;
+            color: rgb(97, 97, 97);
+            background: rgb(238, 238, 238);
+            cursor: pointer;
+        }
+
+        .buttonSection.success button {
+            background: rgb(60, 193, 150);
+            color: white;
+        }
+
+        .buttonSection.success button:hover {
+            background: rgb(48, 158, 123);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="flex flex-aln-center">
+        <a href="../html/dashboard.html" target="_blank">
+            <span class="material-icons-round">settings</span>
+        </a>
+    </header>
+    <div class="container">
+        <main class="flex flex-d-col flex-aln-center flex-jst-sb">
+            <h2>Product URL</h2>
+            <textarea spellcheck="false" id="current_url" cols="30" rows="10" placeholder="Product URL"></textarea>
+            <h2>Tracker ID</h2>
+            <select id="tracker_ids">
+                <option value="default">Default</option>
+            </select>
+            <div class="buttonSection success">
+                <button>Create Tracker Link</button>
+            </div>
+        </main>
+    </div>
+    <script src="/js/popup.js"></script>
+</body>
+
+</html>

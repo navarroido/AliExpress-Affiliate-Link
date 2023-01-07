@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add your tacker ID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        
+        <div><b><u>Note:</u></b> Add here your Traking ID from your account. <br>
+            You can <a href="https://portals.aliexpress.com/trackIdManage.htm?spm=portals._common_account_update.0.0.f9722fe0oISrBB&publisherAccount_tracking"><u>click here</u></a>
+        </a> to check your traking ID, please make sure to add your Tracking IDs as they are written in your account, as they are case sensitive.
+            </div>
+        <div class="tracker-container flex flex-aln-center flex-jst-center">
+
+            <input type="text" placeholder="Add your tracker IDs (case sensitive)" spellcheck="false">
+            <button class="flex flex-aln-center flex-jst-center">
+                <span class="material-icons-round">add_circle</span>
+            </button>
+        </div>
+        <div class="tracker-list">
+            <ul class="flex flex-aln-center flex-d-col">
+                <li data-value="default" class="disable">
+                    <span>
+                        <span class="name">default</span>
+                        <span class="delete">
+                            <span class="material-icons-round">delete</span>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>
