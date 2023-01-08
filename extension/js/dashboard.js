@@ -49,7 +49,6 @@
                         .then(r => r.json().then(r => r))
                         .catch(() => methods.dashboard.sendNotification('server error!', true));
                     if (!result) {
-                        methods.logout();
                         methods.init(); // init all code
                         return;
                     };
@@ -283,7 +282,7 @@
                     let pro_div_value = newEle('div');
                     pro_div_heading.classList.add('heading');
                     pro_div_value.classList.add('value');
-                    pro_div_value.innerText = Boolean(list.is_pro);
+                    pro_div_value.innerText = Boolean(list.d_link);
                     pro_div_heading.innerText = 'Pro Link (d.aliexpress)';
                     pro_div.classList.add('pro_link');
                     pro_div.appendChild(pro_div_heading);
@@ -380,10 +379,10 @@
                     return Promise.resolve(session_div);
                 },
                 init: async function (d) {
-                    let date = d.links.map(l => new Date(l.date).toLocaleDateString()).reverse();
+                    let date = d.links.map(l => new Date(l.date).toLocaleDateString()).reverse(); //reverse the array according to new day first
                     date = [...new Set(date)];
                     for (const item of date) {
-                        let sessions = await this.session(item, d.links);
+                        let sessions = await this.session(item, d.links.reverse()); //reverse the array according to first and last save
                         Selector('.panel .statistics').appendChild(sessions);
                     }
                     Selector('.panel .noData').remove();
