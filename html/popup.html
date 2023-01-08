@@ -9,6 +9,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --color-primary: #fe9900;
+            --color-white: #fff;
+            --color-info-dark: #7b8da1;
+            --color-info-light: #dce1eb;
+            --color-dark: #363949;
+            --color-light: rgba(132, 139, 200, .18);
+            --color-primary-variant: #e52e04;
+        }
+
         .flex {
             display: flex !important;
         }
@@ -128,12 +138,40 @@
         }
 
         .buttonSection.success button {
-            background: rgb(60, 193, 150);
             color: white;
+            background-image: linear-gradient(45deg, var(--color-primary-variant), var(--color-primary), var(--color-primary-variant), var(--color-primary));
+            background-size: 400% 400%;
+            background-position: 0% 50%;
         }
 
         .buttonSection.success button:hover {
-            background: rgb(48, 158, 123);
+            animation: bgChange .5s forwards;
+        }
+
+        .buttonSection.success button:not(:hover) {
+            animation: normalBgChange .5s forwards;
+        }
+
+        @keyframes normalBgChange {
+
+            0% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes bgChange {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
         }
     </style>
 </head>
@@ -157,6 +195,7 @@
             </div>
         </main>
     </div>
+    <script src="/js/global.js"></script>
     <script src="/js/popup.js"></script>
 </body>
 

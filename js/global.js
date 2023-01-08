@@ -12,5 +12,4 @@ cT = intervaliable => clearTimeout(intervaliable),
 docLis = (eve, fun) => document.addEventListener(eve, fun);
 
 // event listener
-
 let eventListener = (bool, targetElement, event, eventHandler) => targetElement.length ? bool ? targetElement.forEach(ele => ele.addEventListener(event, eventHandler)) : targetElement.forEach(ele => ele.removeEventListener(event, eventHandler)) : undefined;

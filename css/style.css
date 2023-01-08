@@ -1,11 +1,11 @@
 :root {
-    --color-primary: #376cfb;
+    --color-primary: #fe9900;
     --color-white: #fff;
     --color-info-dark: #7b8da1;
     --color-info-light: #dce1eb;
     --color-dark: #363949;
     --color-light: rgba(132, 139, 200, .18);
-    --color-primary-variant: #4294ff;
+    --color-primary-variant: #e52e04;
     font-size: 62.5%;
 }
 
@@ -23,21 +23,180 @@ body {
     overflow: hidden;
 }
 
-#container {
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    transform: translateX(-50%);
-    padding: 5rem;
+/* sidebar */
+
+header {
+    position: relative;
+    padding: 1rem 4rem;
 }
 
-#container>div {
+header .logo img {
+    width: 4rem;
+}
+
+header .user {
+    background: var(--color-dark);
+    justify-content: flex-end;
+    overflow: hidden;
+    border-radius: 9rem;
+    overflow: hidden;
+    width: 5rem;
+    cursor: pointer;
+    transition: .3s all ease;
+}
+
+header .user.loggedIn:hover {
+    width: 25rem;
+}
+
+header .user.loggedIn .user-name {
+    max-width: 13rem;
+    min-width: 13rem;
+    width: 13rem;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+header .user.loggedIn .user-logo span {
+    color: white;
+}
+
+header .user .user-logo {
+    margin-left: 4rem;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 9rem;
+    padding: .5rem;
+}
+
+header .user .user-logo span {
+    font-size: 4rem;
+    color: white;
+}
+
+header .user-dropdown {
+    outline: 0;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    margin-right: 4rem;
+    background: var(--color-dark);
+    border-radius: 5px;
+    border: 1px solid var(--color-info-dark);
+}
+
+header .user-dropdown.active {
+    display: flex;
+}
+
+header .user-dropdown::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 10%;
+    border: .7rem solid transparent;
+    border-bottom: .7rem solid var(--color-dark);
+}
+
+header .user-dropdown ul li span.icon {
+    width: 5rem;
+}
+
+header .user-dropdown ul li span:not(.icon) {
+    width: 10rem;
+    padding-left: 2rem;
+}
+
+header .user-dropdown ul li {
+    cursor: pointer;
+    color: var(--color-info-light);
+    padding: 1rem;
+    transition: .2s all ease;
+}
+
+header .user-dropdown ul li:hover {
+    background: var(--color-info-dark);
+}
+
+header .user-dropdown ul li:not(:last-child) {
+    border-bottom: 1px solid var(--color-info-dark);
+}
+
+.sidebar-header .options ul {
+    box-shadow: 0px 0px 10px 1px rgba(132, 139, 200, .18);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.sidebar-header .options ul li {
+    letter-spacing: 1px;
+    color: var(--color-dark);
+    text-align: center;
+    width: 30rem;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar-header .options ul li.active,
+.user-panel .credential>div form button,
+.user-panel ul li.active,
+.tracker-container button,
+header .user.loggedIn {
+    color: white;
+    background-image: linear-gradient(45deg, var(--color-primary-variant), var(--color-primary), var(--color-primary-variant), var(--color-primary));
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+}
+
+.sidebar-header .options ul li.active:hover,
+.user-panel .credential>div form button:hover,
+.user-panel ul li.active:hover,
+.tracker-container button:hover,
+header .user.loggedIn:hover {
+    animation: bgChange .5s forwards;
+}
+
+.sidebar-header .options ul li.active:not(:hover),
+.user-panel .credential>div form button:not(:hover),
+.user-panel ul li.active:not(:hover),
+.tracker-container button:not(:hover),
+header .user.loggedIn:not(:hover) {
+    animation: normalBgChange .5s forwards;
+}
+
+/* panel */
+
+.panel {
+    width: 70%;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.panel>div {
+    display: none;
+}
+
+.panel>div.active {
+    display: flex;
+}
+
+/* tracker panel */
+
+.tracker_panel>div {
     margin-bottom: 4rem;
 }
 
 .tracker-container {
     font-family: 'Poppins', sans-serif;
-    width: max-content;
+    width: 100%;
     height: 5rem;
     border-radius: 5px;
     transition: .3s all ease;
@@ -52,14 +211,14 @@ body {
     font-size: 2rem;
     background: var(--color-dark);
     height: 5rem;
-    width: 50rem;
+    width: 100%;
     padding: .5rem 2.5rem;
     border-radius: 5px 0 0 5px;
-    outline: none;
-    border: none;
+
 }
 
-.tracker-container input::placeholder {
+.tracker-container input::placeholder,
+.user-panel .credential>div input::placeholder {
     color: #8f9092;
     padding-inline: .3rem;
 }
@@ -72,7 +231,6 @@ body {
     height: 100%;
     padding: .5rem 1rem;
     border-radius: 0 5px 5px 0;
-    background: var(--color-primary-variant);
     color: white;
 }
 
@@ -104,15 +262,15 @@ body {
     color: var(--color-dark);
     background: var(--color-info-light);
 }
-.tracker-list ul li:not(.disbale) .delete{
+
+.tracker-list ul li:not(.disbale) .delete {
     cursor: pointer;
 }
 
 .tracker-list ul li.disable .delete {
     cursor: not-allowed !important;
-    color: #8f9092;
+    color: var(--color-info-dark);
 }
-
 
 .tracker-list ul li>span {
     font-weight: bolder;
@@ -120,4 +278,331 @@ body {
     width: 100%;
     align-items: center;
     justify-content: space-between;
+}
+
+/* statistics panel */
+
+.panel .statistics {
+    gap: 1rem;
+    padding-inline: 1rem;
+    overflow: auto;
+    max-height: 50rem;
+}
+
+.panel .noData {
+    letter-spacing: 1px;
+    background: var(--color-info-light);
+    color: var(--color-dark);
+    height: 30rem;
+    border-radius: 5px;
+}
+
+.panel .noData h4 {
+    color: var(--color-info-dark);
+}
+
+.panel .statistics .session .date {
+    color: var(--color-dark);
+    font-weight: bold;
+}
+
+.panel .statistics .session {
+    gap: 1rem;
+}
+
+.panel .statistics .session .detail {
+    border: 2px solid var(--color-info-light);
+    color: var(--color-dark);
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    height: calc(5rem + 1rem*2);
+    overflow: hidden;
+    gap: 1rem;
+    justify-content: space-between;
+    transition: .8s all ease;
+}
+
+.panel .statistics .session .detail.active {
+    height: 30rem;
+}
+
+.panel .statistics .session .detail>:first-child {
+    height: 5rem;
+    align-items: center;
+}
+
+.panel .statistics .session .detail>:not(first-child) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 5rem;
+}
+
+.panel .statistics .session,
+.panel .statistics .session .detail,
+.panel .statistics .session .detail .product,
+.panel .statistics .session .detail .product .link {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel .statistics .session .detail .dropdown {
+    cursor: pointer;
+}
+
+.panel .statistics .session .detail .product .link {
+    border-radius: 5px;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--color-info-light);
+    width: 40rem;
+}
+
+.panel .statistics .session .detail .product .link input {
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.8rem;
+    width: 100%;
+}
+
+.panel .statistics .session .detail .product .link .copy {
+    cursor: pointer;
+    display: flex;
+}
+
+.panel .statistics .session .detail .original_link .value {
+    color: #4294ff;
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.panel .statistics .session .detail .heading {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+}
+
+.panel .statistics .session .detail .product {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.panel .statistics .session .detail .product>:first-child {
+    width: 10%;
+}
+
+.panel .statistics .session .detail .product>:first-child>.value {
+    width: 25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.panel .statistics .session .detail .product .link {
+    flex-direction: row;
+}
+
+.panel .statistics .session .detail .product .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel .statistics .session .detail .product .dropdown span {
+    color: var(--color-info-dark);
+    transition: .5s all ease;
+    font-size: 4rem;
+}
+
+.panel .statistics .session .detail .product .dropdown.active span {
+    transform: rotateZ(180deg);
+}
+
+/* user panel */
+
+.user-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.user-panel.active {
+    display: flex;
+}
+
+.user-panel>div {
+    display: none;
+}
+
+.user-panel>div.active {
+    display: flex;
+}
+
+.user-panel>div {
+    border-radius: 5px;
+    padding: 3rem 5rem;
+    background: rgb(238, 238, 238);
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 2rem;
+}
+
+.user-panel ul {
+    box-shadow: 0px 0px 10px 1px rgba(132, 139, 200, .18);
+    font-weight: bold;
+    width: 30rem;
+    border-radius: 5px;
+}
+
+.user-panel ul li {
+    letter-spacing: 1px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-panel .credential>div {
+    display: none;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.user-panel .credential>div form>div {
+    width: 100%;
+}
+
+.user-panel .credential>div form {
+    gap: 3rem;
+}
+
+.user-panel .credential>div.active {
+    display: flex;
+}
+
+.msg {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.msg.success {
+    color: rgb(2, 116, 11);
+}
+
+.msg.error {
+    color: rgb(116, 2, 2);
+}
+
+.user-panel .credential>div {
+    width: 35rem;
+}
+
+.user-panel .credential div.pwd input {
+    border-radius: 5px 0 0 5px;
+}
+
+.user-panel .credential>div .visibility {
+    cursor: pointer;
+    color: #8f9092;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    width: 6rem;
+    background: var(--color-dark);
+}
+
+.user-panel .credential>div input {
+    width: 100%;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    font-size: inherit;
+    background: var(--color-dark);
+    color: white;
+}
+
+.user-panel .credential>div form button {
+    letter-spacing: 1px;
+    color: white;
+    border-radius: 5px;
+    padding-block: 1rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-info-dark);
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    animation: msgAppear 5s forwards ease;
+}
+
+.notification .icon-fail {
+    display: flex;
+    color: rgb(238, 142, 142);
+}
+
+.notification .icon-success {
+    display: flex;
+    color: rgb(48, 223, 48);
+}
+
+
+@keyframes msgAppear {
+
+    0%,
+    100% {
+        top: -50%;
+    }
+
+    10% {
+        top: 0;
+    }
+
+    50% {
+        top: 0;
+    }
+}
+
+@keyframes normalBgChange {
+
+    0% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes bgChange {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
 }

@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "AliExpress Affiliate Link Generator",
-    "version": "1.0.0",
-    "description": "Automate the process of shot affilate link",
+    "version": "2.1.2",
+    "description": "Automate the process of short affilate link",
     "background": {
         "service_worker": "js/background.js"
     },
@@ -23,7 +23,15 @@
     },
     "content_scripts": [{
         "all_frames": true,
-        "matches": ["*://portals.aliexpress.com/*"],
+        "matches": [
+            "*://portals.aliexpress.com/*",
+            "*://*.aliexpress.com/*",
+            "*://*.aliexpress.ru/*",
+            "*://*.aliexpress.us/*",
+            "*://aliexpress.com/*",
+            "*://aliexpress.ru/*",
+            "*://aliexpress.us/*"
+        ],
         "css": ["css/custom.css"],
         "js": ["js/global.js", "js/content.js"],
         "match_about_blank": true

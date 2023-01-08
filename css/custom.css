@@ -60,3 +60,28 @@
     font-size: 30px !important;
     color: red;
 }
+
+.affilate-server-notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-info-dark);
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    animation: msgAppear 5s forwards ease;
+}
+
+.affilate-server-notification .icon-fail {
+    display: flex;
+    color: rgb(238, 142, 142);
+}
+
+.affilate-server-notification .icon-success {
+    display: flex;
+    color: rgb(48, 223, 48);
+}

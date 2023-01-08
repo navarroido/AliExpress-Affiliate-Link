@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add your tacker ID</title>
+    <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="../css/custom.css">
@@ -14,30 +14,136 @@
 </head>
 
 <body>
-    <div id="container">
-        
-        <div><b><u>Note:</u></b> Add here your Traking ID from your account. <br>
-            You can <a href="https://portals.aliexpress.com/trackIdManage.htm?spm=portals._common_account_update.0.0.f9722fe0oISrBB&publisherAccount_tracking"><u>click here</u></a>
-        </a> to check your traking ID, please make sure to add your Tracking IDs as they are written in your account, as they are case sensitive.
+    <div id="container flex flex-aln-center flex-d-col">
+        <header class="flex flex-jst-sb flex-aln-center">
+            <div class="logo flex flex-aln-center flex-jst-center">
+                <img src="/img/logo.png" alt="">
             </div>
-        <div class="tracker-container flex flex-aln-center flex-jst-center">
-
-            <input type="text" placeholder="Add your tracker IDs (case sensitive)" spellcheck="false">
-            <button class="flex flex-aln-center flex-jst-center">
-                <span class="material-icons-round">add_circle</span>
-            </button>
+            <div class="user flex flex-aln-center">
+                <div class="user-name">
+                    <span></span>
+                </div>
+                <div class="user-logo flex flex-aln-center flex-jst-center">
+                    <span class="material-icons-round">person</span>
+                </div>
+            </div>
+            <div class="user-dropdown" tabindex="1">
+                <ul class="flex flex-aln-center flex-d-col">
+                    <li class="settings flex flex-aln-center">
+                        <span class="icon material-icons-round flex flex-aln-center flex-jst-center">settings</span>
+                        <span class="flex flex-aln-center">Settings</span>
+                    </li>
+                    <li class="logout flex flex-aln-center">
+                        <span class="icon material-icons-round flex flex-aln-center flex-jst-center">logout</span>
+                        <span class="flex flex-aln-center">Logout</span>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="sidebar-header flex flex-jst-center flex-aln-center">
+            <div class="options">
+                <div class="option-div flex flex-aln-center flex-jst-center">
+                    <ul class="flex">
+                        <li data-value="tracker_panel" id="tacker_ids" class="active">Tacker IDs</li>
+                        <li data-value="statistics" id="statistics">Statistics</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="tracker-list">
-            <ul class="flex flex-aln-center flex-d-col">
-                <li data-value="default" class="disable">
-                    <span>
-                        <span class="name">default</span>
-                        <span class="delete">
-                            <span class="material-icons-round">delete</span>
-                        </span>
+        <div class="panel">
+            <div class="tracker_panel flex-d-col active">
+                <div><b><u>Note:</u>
+                    </b> Add here your Traking ID from your account. <br>
+                    You can
+                    <a
+                        href="https://portals.aliexpress.com/trackIdManage.htm?spm=portals._common_account_update.0.0.f9722fe0oISrBB&publisherAccount_tracking">
+                        <u>click here</u>
+                    </a>
+                    </a> to check your traking ID, please make sure to add your Tracking IDs as they are written in
+                    your
+                    account, as they are case sensitive.
+                </div>
+                <div class="tracker-container flex flex-aln-center flex-jst-center">
+                    <input type="text" placeholder="Add your tracker IDs (case sensitive)" spellcheck="false">
+                    <button class="flex flex-aln-center flex-jst-center">
+                        <span class="material-icons-round">add_circle</span>
+                    </button>
+                </div>
+                <div class="tracker-list">
+                    <ul class="flex flex-aln-center flex-d-col">
+                        <li data-value="default" class="disable">
+                            <span>
+                                <span class="name">default</span>
+                                <span class="delete">
+                                    <span class="material-icons-round">delete</span>
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="statistics flex-d-col">
+                <div class="noData flex flex-aln-center flex-jst-center">
+                    <span class="flex flex-d-col flex-aln-center flex-jst-center">
+                        <h2>No Data Found</h2>
+                        <br>
+                        <h4>To save your links, First Login or Create account</h4>
                     </span>
-                </li>
-            </ul>
+                </div>
+            </div>
+        </div>
+        <div class="user-panel">
+            <div class="active flex flex-aln-center flex-d-col">
+                <ul class="flex flex-aln-center flex-jst-sb">
+                    <li data-value="login" class="active">Login</li>
+                    <li data-value="registration">Registration</li>
+                </ul>
+                <div class="credential flex-aln-center">
+                    <div class="login active">
+                        <form id="formlogin" action="" class="flex flex-aln-center flex-d-col" method="post">
+                            <div>
+                                <input type="email" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="pwd flex flex-aln-center flex-jst-center">
+                                <input type="password" id="password" placeholder="Password" required>
+                                <span class="visibility flex flex-aln-center flex-jst-center">
+                                    <span class="material-icons-round">visibility</span>
+                                </span>
+                                <input type="hidden" id="encyptpassword">
+                            </div>
+                            <div class="flex flex-aln-center flex-jst-center">
+                                <button type="submit" value="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="registration">
+                        <form id="formregistration" action="" method="post" class="flex flex-aln-center flex-d-col">
+                            <div>
+                                <input type="email" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="pwd flex flex-aln-center flex-jst-center">
+                                <input type="password" id="password" placeholder="Password" required>
+                                <span class="visibility flex flex-aln-center flex-jst-center">
+                                    <span class="material-icons-round">visibility</span>
+                                </span>
+                            </div>
+                            <div class="pwd flex flex-aln-center flex-jst-center flex-d-col">
+                                <div class="flex flex-aln-center flex-jst-center">
+                                    <input type="password" id="cmfpassword" placeholder="Confirm Password" required>
+                                    <span class="visibility flex flex-aln-center flex-jst-center">
+                                        <span class="material-icons-round">visibility</span>
+                                    </span>
+                                    <input type="hidden" id="encyptpassword">
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" value="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="profile"></div>
         </div>
     </div>
 
