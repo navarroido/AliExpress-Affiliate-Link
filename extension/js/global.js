@@ -29,7 +29,7 @@ const G_STR = {
     short_link_created_msg: 'Affilated Link is copied in your clipboard!',
     redirect_msg_text_html: 'The tab will be redirect in <span class="count"></span> seconds',
     redirect_notuser_msg_text_html: '<center>We have a way to solve this and let you eran from non affiliate link. <BR/> <div class="reg"></div> <BR/>The tab will be redirect in <span class="count"></span> seconds</center>',
-    button_msg_text_html: '<div class="buttonSection success" ><a href="../html/dashboard.html" target="_blank"><button style="padding:35px, 10px;color: white;background-image: linear-gradient(45deg, #e52e04, #fe9900, #e52e04, #fe9900);background-size: 400% 400%;backround-position: 0% 50%;cursor: pointer; outline: none; border: none; height: 100%; padding: .5rem 1rem; border-radius: 5px;">Register Here</button></a></div>',
+    button_msg_text_html: '<div class="buttonSection success" ><a href="chrome-extension://' + chrome.runtime.id + '/html/dashboard.html" target="_blank"><button style="padding:35px, 10px;color: white;background-image: linear-gradient(45deg, #e52e04, #fe9900, #e52e04, #fe9900);background-size: 400% 400%;backround-position: 0% 50%;cursor: pointer; outline: none; border: none; height: 100%; padding: .5rem 1rem; border-radius: 5px;">Register Here</button></a></div>',
     dlink_msg_text_html: 'But we apply a trick for bypass this error. Just wait for <span class="count"></span> second',
 }
 
