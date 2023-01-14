@@ -42,14 +42,17 @@
         },
         appendNotification: async function (isSuccess, user = false) {
             let interval;
-            let second = isSuccess ? 3 : user ? 3 : 10;
+            let second = isSuccess ? 3 : user ? 3 : 100;
             let parentDiv = newEle('div');
             let text = newEle('h1');
             let warning = newEle('h2');
+            let register = newEle('div');
             if (!user && !isSuccess) {
                 parentDiv.classList.add('affilate-notification-fail');
-                text.innerText = domele().portel.error_container.innerText;
-                warning.innerHTML = G_STR.redirect_msg_text_html;
+                //text.innerText = domele().portel.error_container.innerText;
+                text.innerText = "Oooops :( this is not an affiliate link"
+                warning.innerHTML = G_STR.redirect_notuser_msg_text_html;
+                //register.innerHTML = G_STR.button_msg_text_html;
             } else if (user && !isSuccess) {
                 parentDiv.classList.add('affilate-notification-fail');
                 text.innerText = domele().portel.error_container.innerText;
@@ -60,8 +63,10 @@
                 warning.innerHTML = G_STR.redirect_msg_text_html;
             }
             warning.querySelector('span.count').innerText = second;
+            warning.querySelector('.reg').innerHTML = G_STR.button_msg_text_html;
             parentDiv.appendChild(text);
             parentDiv.appendChild(warning);
+            parentDiv.appendChild(register);
             document.body.appendChild(parentDiv);
             await new Promise(res => interval = sI(() => {
                 second--;
