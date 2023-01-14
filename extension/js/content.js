@@ -1,5 +1,8 @@
 (async () => {
     let fun_content = {
+        openDashboard: async function () {
+            window.open(G_STR.dashboard_url, '_target');
+        },
         sendToAPI: async function () {
             let r = await G_FUN.chrome_api.get([G_STR.session_storage, G_STR.user_auth]);
             if (!r.auth || !r.auth.valid) {
@@ -50,8 +53,10 @@
             if (!user && !isSuccess) {
                 parentDiv.classList.add('affilate-notification-fail');
                 //text.innerText = domele().portel.error_container.innerText;
-                text.innerText = "Oooops :( this is not an affiliate link"
+                text.innerText = G_STR.unsupoorted_link_msg;
                 warning.innerHTML = G_STR.redirect_notuser_msg_text_html;
+                warning.querySelector('.affilate_reg').innerHTML = G_STR.button_msg_text_html;
+                warning.querySelector('.affilate_reg .affilate_reg_btn').addEventListener('click', this.openDashboard);
                 //register.innerHTML = G_STR.button_msg_text_html;
             } else if (user && !isSuccess) {
                 parentDiv.classList.add('affilate-notification-fail');
@@ -63,7 +68,6 @@
                 warning.innerHTML = G_STR.redirect_msg_text_html;
             }
             warning.querySelector('span.count').innerText = second;
-            warning.querySelector('.reg').innerHTML = G_STR.button_msg_text_html;
             parentDiv.appendChild(text);
             parentDiv.appendChild(warning);
             parentDiv.appendChild(register);

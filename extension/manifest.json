@@ -7,7 +7,7 @@
         "service_worker": "js/background.js"
     },
     "web_accessible_resources": [{
-        "resources": ["html/popup.html", "css/custom.css", "js/*.js"],
+        "resources": ["html/*.html", "css/custom.css", "js/*.js"],
         "matches": ["<all_urls>"]
     }],
     "icons": {

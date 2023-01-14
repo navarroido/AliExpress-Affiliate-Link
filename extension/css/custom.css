@@ -85,3 +85,17 @@
     display: flex;
     color: rgb(48, 223, 48);
 }
+
+.affilate_reg .affilate_reg_btn {
+    padding: 35px, 10px;
+    color: white;
+    background-image: linear-gradient(45deg, #e52e04, #fe9900, #e52e04, #fe9900);
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    height: 100%;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
